@@ -1,3 +1,4 @@
+//created a batch class to update all account records
 public class AccountsBatch implements Database.batchable<sobject>, database.stateful{
     integer countRecords = 0;
     //first method to execute is START
@@ -9,6 +10,7 @@ public class AccountsBatch implements Database.batchable<sobject>, database.stat
         return acc;
     }
 
+    //execute method will be called again and again until it process all records.
     public void execute(Database.BatchableContext bc, list<account> listAcc){
         system.debug('execute method started');
         list<account> updateAcc = new list<account>();
@@ -25,6 +27,7 @@ public class AccountsBatch implements Database.batchable<sobject>, database.stat
         system.debug('TOTAL records updated TILL NOW: ' + countRecords);
     }
 
+    //finish method will be called at the end.
     public void finish(Database.BatchableContext bc){
         system.debug('BATCH PROCESSED. ENJOY.');
         system.debug('TOTAL records processed is ' + countRecords);
