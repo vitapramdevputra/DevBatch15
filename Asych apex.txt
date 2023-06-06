@@ -1,0 +1,42 @@
+Asych apex
+    - future, batchable, queueeuable, schedulable
+Future
+    - static, SOBJECT CANNOT BE PARAMETER (only primitive datatype allowed), void.
+    - @future
+    - how many parameters we can pass? (trick question)
+        - whatever number of parameters we want to pass.
+    - we CANNOT call future method from a future method(directly or indirectly)
+        - Department trigger
+            - calling future method
+                - inserting employee
+                    - so, employee trigger executes
+                        - inside employee trigger, we are calling another future method.
+                            - THIS WILL THROW ERROR.
+
+Interface
+    - what? 
+        method CANNOT have any body.
+    - We just declare method in interface (just method signature).
+
+    We implement interface in another class 
+        - class must implement the method declared in interface.
+
+Batch apex:
+    - if we want to process huge number of records we use Batch class
+    - updating 2000 records at a time.
+        - it is giving CPU Time limit error
+        - we want to update 5k records. How?
+            - use batch apex, group records in 1000 records at a time and process it.
+    - how many methods which we MUST implement? and which are those?
+        - 3. 
+        - start, execute, and finish.
+        - which method is called only one time?
+            - finish and start.
+            - only execute method executes multiple times.
+
+Real time scenario:
+    - item custom object
+        - 30 records
+            -> 100 records
+    - all the open item records
+        - write a batch to process all the older records. Data migration step while deployment

@@ -1,0 +1,7 @@
+Interface
+    - methods DO NOT have body. 
+    - m1 (one method)
+
+Class has to implement interface.
+    - we have to write body of m1 in this CLASS.
+    - m1 

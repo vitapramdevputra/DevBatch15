@@ -1,0 +1,28 @@
+Queueable and future and batch
+ - asyn apex. 
+ - interface.
+ - one method to implement
+    execute
+        - once
+- can we pass sObject or any other data type?
+    yes.
+    how?
+        create class variables and assign value to that class variable
+            - we can also do that via constructor.
+
+
+Requirements:
+    - update a default account id on all cases if account id is null
+    - do it via queueable.
+        - pass account id(the default one) and list of cases to update
+
+
+MixedDML
+    - setup objects 
+        - user, profile, permission set
+    - non setup objects
+        - all other objects (account, contact, case, task, employee__c)
+
+    - insert/update user object in and update account object, in ONE transactino.
+    - insert/update user object in syc
+     and update account object in future.

@@ -1,0 +1,24 @@
+- If we insert any record in test method, will it inserted org?
+    - no. 
+    - where is the record inserted? 
+        - it is available for that particular test method(its own test world)
+    - AFter inserting a record if we do in the same method SOQl
+        - will we get the record?
+        - yes.
+
+- We need some data in the Method which we are testing.
+    - in our test method we create the required records.
+
+Assert are mandatory if our method is donig some dml or returning some output.
+ - assert.areEqual
+ - assert.isTrue
+
+Test.startTest and Test.stopTest
+    - to reset governor limit we use Test.startTest, and Test.stopTest
+
+Test setup
+ - we create data in test setup method which we can use in all the test method of THAT test class.
+
+How to TEST triggers/handlers?
+    - we create/update/delete/undelete records and triggers will be called automatically. 
+    - to test handlers, we create specific. 
