@@ -1,16 +1,23 @@
 public class SPTriggerHandler {
 
     public static void createDefaultTicket(List<salesforce_project__c> spTriggerNew) {
-        //create list<st>
-        list<Salesforce_Ticket__c> listST = new List<Salesforce_Ticket__c>();
-        for (Salesforce_Project__c newSP : spTriggerNew) {
-            Salesforce_Ticket__c st = new Salesforce_Ticket__c();
-            st.Subject__c = 'Default ST';
-            st.Salesforce_Project__c = newSP.Id; //relationship field
-            listST.add(st);
-        }
-        if (!listST.isEmpty()) {
-            insert listST;
+        try {
+            //create list<st>
+            list<Salesforce_Ticket__c> listST = new List<Salesforce_Ticket__c>();
+            for (Salesforce_Project__c newSP : spTriggerNew) {
+                Salesforce_Ticket__c st = new Salesforce_Ticket__c();
+                st.Subject__c = 'Default ST';
+                st.Salesforce_Project__c = newSP.Id; //relationship field
+                listST.add(st);
+            }
+            if (!listST.isEmpty()) {
+                insert listST;
+            }
+        } catch (Exception Ex) {
+            //if we DO NOT THROW eror here, we can create project, but the default ticket will NOT be created.
+            for (Salesforce_Project__c newSP : spTriggerNew) {
+                 newSP.addError('Default Ticket creation failed. Contact YOUR administrator, NOT developer.');
+            }
         }
     }
 
