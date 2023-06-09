@@ -36,7 +36,9 @@ public class ContactTriggerHandler {
                         //addError
             for (Contact newContact : cTriggerNew) {
                 if (newContact.LeadSource != cTriggerOldMap.get(newContact.id).leadsource) {
-                    newContact.LeadSource.addError('Cannot update leadsource. Please user! Go away!');
+                    //how to access label value in apex??
+                        //system.label.labelName
+                    newContact.LeadSource.addError(System.label.ContactValidation2);
                 }
             }
         }

@@ -1,5 +1,8 @@
 trigger AccountTrigger on Account (before insert,after insert, before update,  after update, before delete, after delete, after undelete) {
 
+    //TriggerSwitch.getInstance('Account')
+        //if not enabled
+            //return;
     system.debug('---');
 
     if(Trigger.isBefore ){

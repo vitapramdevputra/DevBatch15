@@ -3,10 +3,17 @@ public class SPTriggerHandler {
     public static void createDefaultTicket(List<salesforce_project__c> spTriggerNew) {
         try {
             //create list<st>
+
+            //get  custom setting  Org default value
+            DefaultTicketInfo__c dt = defaultTicketInfo__c.getOrgDefaults();
+
             list<Salesforce_Ticket__c> listST = new List<Salesforce_Ticket__c>();
             for (Salesforce_Project__c newSP : spTriggerNew) {
                 Salesforce_Ticket__c st = new Salesforce_Ticket__c();
-                st.Subject__c = 'Default ST';
+                //Subject and Description field should be added dynamically from custom setting
+                st.Subject__c = dt.subject__c;
+                st.Description__c = dt.description__c;
+                st.Priority__c = 'High';
                 st.Salesforce_Project__c = newSP.Id; //relationship field
                 listST.add(st);
             }
