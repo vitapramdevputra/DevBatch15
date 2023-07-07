@@ -15,6 +15,11 @@ public class Calculator9 {
         //return (z+x+c); //THIS WORKS too. 
    }
 
+   public integer avg(integer a, integer b){
+      integer avg = add(a,b)/2;
+      return avg;
+   }
+
    public boolean leapYearCheck(date dt){
         integer yr = dt.year();//.year() is method name which returns YEAR component of the date.
         //isLeapYear -> built in method of date class. Which returns true or false in year is leap or not

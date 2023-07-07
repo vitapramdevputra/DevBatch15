@@ -1,0 +1,37 @@
+Update status of case = CLOSE, and send email to related contact
+    - in two ways.
+        1) via Close Case BUTTON on TOP of Case LRP
+            - update case status = close.
+            - send email to contact
+        2) via CLOSE__c checkbox field of case
+            - update case status = close
+            - send email to cotnact
+
+
+FLOWs:
+    step1: Auto Launch flow:
+        - we will Pass Case ID in ths flow
+        - close the case of passed id.
+        - send email to related contact
+        - if success then return TRUE else FALSE
+    step 2: ScreenFlow
+        - When BUTTON Close Case is clicked. Call screenflow
+        - call Auto Launch flow of step 1.
+            - how to pass Case ID from screenFlow?
+                - recordId variable in screenflow, which we will get from Page
+            - if AutoLaunch flow returns TRUE then show success message. Else show error message.
+    step 3: RT flow
+        - when CLOSE__c checkbox is Checked and case is NOT Closed already, call AutoLaunch FLow of step 1
+            - how to pass Case ID?
+                - $Record.id
+
+
+
+
+
+Autolaunch flow to log errors
+    - from other flows we will call Log Error flow to Log erros. (Sync)
+
+Platform event
+    - accepts all parameters
+    - from platform event trigger flow, create application log record.
